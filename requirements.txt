@@ -1,0 +1,24 @@
+# Linting and code formatting
+autopep8
+black
+isort
+pep8-naming
+pycodestyle
+
+# Flake8
+flake8
+flake8-bandit
+flake8-bugbear
+flake8-builtins
+flake8-comprehensions
+flake8-eradicate
+flake8-implicit-str-concat
+flake8-print
+flake8-functions
+flake8-variables-names
+flake8-class-attributes-order
+flake8-expression-complexity
+flake8-cognitive-complexity
+
+# Django
+Django
