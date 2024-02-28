@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     # Apps
     "app",
     "main.apps.MainConfig",
+    "goods.apps.GoodsConfig",
 ]
 
 MIDDLEWARE = [
