@@ -10,7 +10,7 @@ def index(request):
         "content": "Furniture store 'DecorDazzleHub'",
     }
 
-    return render(request, 'main/index.html', context)
+    return render(request, "main/index.html", context)
 
 
 def about(request):
@@ -18,7 +18,7 @@ def about(request):
     context = {
         "title": "DecorDazzleHub - About us",
         "content": "About us",
-        "text_on_page": "Lorem"
+        "text_on_page": "Lorem ipsum dolor sit amet",
     }
 
-    return render(request, 'main/about.html', context)
+    return render(request, "main/about.html", context)

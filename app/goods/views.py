@@ -11,15 +11,15 @@ def catalog(request):
     """
 
     # Constructing the file path safely
-    file_path = os.path.join(os.getcwd(), 'app', 'goods', 'goods_list.json')
+    file_path = os.path.join(os.getcwd(), "app", "goods", "goods_list.json")
 
     # Reading data from goods_list.json
-    with open(file_path, 'r', encoding='utf-8') as json_file:
+    with open(file_path, "r", encoding="utf-8") as json_file:
         goods_data = json.load(json_file)
 
     context = {
-        'title': 'DecorDazzleHub - Catalog',
-        'goods': goods_data,
+        "title": "DecorDazzleHub - Catalog",
+        "goods": goods_data,
     }
 
     return render(request, "goods/catalog.html", context)
