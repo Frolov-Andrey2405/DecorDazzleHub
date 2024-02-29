@@ -25,3 +25,6 @@ Django
 
 # Images
 Pillow
+
+# Interactive shell
+ipython
