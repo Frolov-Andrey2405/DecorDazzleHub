@@ -1,16 +1,28 @@
 """Views"""
 
+import json
+import os
 from django.shortcuts import render
 
 
 def catalog(request):
     """
     The catalog function is the main page of the website.
-
-    It displays all categories and their items,
-    as well as a link to add new items.
     """
-    return render(request, "goods/catalog.html")
+
+    # Constructing the file path safely
+    file_path = os.path.join(os.getcwd(), 'app', 'goods', 'goods_list.json')
+
+    # Reading data from goods_list.json
+    with open(file_path, 'r', encoding='utf-8') as json_file:
+        goods_data = json.load(json_file)
+
+    context = {
+        'title': 'DecorDazzleHub - Catalog',
+        'goods': goods_data,
+    }
+
+    return render(request, "goods/catalog.html", context)
 
 
 def product(request):
