@@ -22,3 +22,6 @@ flake8-cognitive-complexity
 
 # Django
 Django
+
+# Images
+Pillow
