@@ -15,6 +15,7 @@ def tag_categories():
     """
     return Categories.objects.all()
 
+
 @register.simple_tag(takes_context=True)
 def change_params(context, **kwargs):
     """

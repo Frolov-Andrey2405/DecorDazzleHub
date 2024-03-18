@@ -9,5 +9,5 @@ def q_search(query):
     If the query is an integer and has less than or equal to 5 digits, then it will return all products with that id.
 
     """
-    if query.isdigit() and len(query) <=5:
+    if query.isdigit() and len(query) <= 5:
         return Product.objects.filter(id=int(query))
