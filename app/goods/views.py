@@ -6,10 +6,12 @@ from django.shortcuts import get_list_or_404, render
 from goods.models import Product
 
 
-def catalog(request, category_slug, page=1):
+def catalog(request, category_slug):
     """
     The catalog function is the main page of the website.
     """
+
+    page = request.GET.get("page", 1)
 
     if category_slug == "all":
         goods = Product.objects.all()
@@ -17,7 +19,7 @@ def catalog(request, category_slug, page=1):
         goods = get_list_or_404(Product.objects.filter(category__slug=category_slug))
 
     paginator = Paginator(goods, 3)
-    current_page = paginator.page(page)
+    current_page = paginator.page(int(page))
 
     context = {
         "title": "DecorDazzleHub - Catalog",
