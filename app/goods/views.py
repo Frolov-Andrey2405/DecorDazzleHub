@@ -18,8 +18,14 @@ def catalog(request):
     return render(request, "goods/catalog.html", context)
 
 
-def product(request):
+def product(request, product_id):
     """
     The product function returns a rendered template of the product page.
     """
-    return render(request, "goods/product.html")
+    product_instance = Product.objects.get(id=product_id)
+
+    context = {
+        "product": product_instance,
+    }
+
+    return render(request, "goods/product.html", context=context)
