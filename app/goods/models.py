@@ -58,7 +58,7 @@ class Product(models.Model):
 
     def display_id(self):
         """Returns a string representation of the product ID"""
-        return f"{self.id:05}"  # pylint: disable=E1101
+        return f"{self.id:05}"
 
     def sell_price(self):
         """

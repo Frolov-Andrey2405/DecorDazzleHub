@@ -11,4 +11,4 @@ def tag_categories():
     """
     Returns all the categories in the database.
     """
-    return Categories.objects.all()  # pylint: disable=E1101
+    return Categories.objects.all()
