@@ -1,0 +1,170 @@
+[
+{
+  "model": "goods.product",
+  "pk": 1,
+  "fields": {
+    "name": "Plant",
+    "slug": "plant",
+    "description": "A plant to enhance your interior, providing freshness and tranquility to the atmosphere.",
+    "image": "goods_images/plants_Tc7YzyX.jpg",
+    "price": "10.00",
+    "discount": "0.00",
+    "quantity": 7,
+    "category": 7
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 2,
+  "fields": {
+    "name": "Stylized Flower",
+    "slug": "stylized-flower",
+    "description": "A designer flower (possibly artificial) to adorn your interior.",
+    "image": "goods_images/flower.jpg",
+    "price": "15.00",
+    "discount": "0.00",
+    "quantity": 3,
+    "category": 7
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 3,
+  "fields": {
+    "name": "Unusual Bedside Table",
+    "slug": "unusual-bedside-table",
+    "description": "A table that looks quite strange but is suitable for placement next to the bed.",
+    "image": "goods_images/bedside_table.jpg",
+    "price": "25.00",
+    "discount": "0.00",
+    "quantity": 4,
+    "category": 7
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 4,
+  "fields": {
+    "name": "Tea Table and Three Chairs",
+    "slug": "tea-table-and-three-chairs",
+    "description": "A set of three chairs and a designer table for the living room.",
+    "image": "goods_images/set_of_tea_table_and_three_chairs.jpg",
+    "price": "150.00",
+    "discount": "0.00",
+    "quantity": 4,
+    "category": 6
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 5,
+  "fields": {
+    "name": "Tea Table and Two Chairs",
+    "slug": "tea-table-and-two-chairs",
+    "description": "A set consisting of a table and two chairs in a minimalist style.",
+    "image": "goods_images/set_of_tea_table_and_two_chairs.jpg",
+    "price": "93.00",
+    "discount": "0.00",
+    "quantity": 11,
+    "category": 6
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 6,
+  "fields": {
+    "name": "Office Chair",
+    "slug": "office-chair",
+    "description": "Product description praising its greatness, but it's just a chair, what else to say...",
+    "image": "goods_images/office_chair.jpg",
+    "price": "30.00",
+    "discount": "0.00",
+    "quantity": 14,
+    "category": 5
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 7,
+  "fields": {
+    "name": "Corner Sofa for the Living Room",
+    "slug": "corner-sofa-for-the-living-room",
+    "description": "Corner sofa that transforms into a double bed, perfect for the living room and hosting guests!",
+    "image": "goods_images/corner_sofa.jpg",
+    "price": "610.00",
+    "discount": "0.00",
+    "quantity": 5,
+    "category": 4
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 8,
+  "fields": {
+    "name": "Ordinary Sofa",
+    "slug": "ordinary-sofa",
+    "description": "A sofa, just an ordinary one, nothing remarkable to describe.",
+    "image": "goods_images/sofa.jpg",
+    "price": "190.00",
+    "discount": "0.00",
+    "quantity": 8,
+    "category": 4
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 9,
+  "fields": {
+    "name": "Double Bed",
+    "slug": "double-bed",
+    "description": "A double bed with a headboard, very orthopedic in nature.",
+    "image": "goods_images/double_bed.jpg",
+    "price": "669.99",
+    "discount": "0.00",
+    "quantity": 13,
+    "category": 3
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 10,
+  "fields": {
+    "name": "Bedside Table",
+    "slug": "bedside-table",
+    "description": "Bedside table with two drawers (flower not included in the set).",
+    "image": "goods_images/strange_table.jpg",
+    "price": "55.00",
+    "discount": "10.00",
+    "quantity": 15,
+    "category": 3
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 11,
+  "fields": {
+    "name": "Kitchen Table with Sink",
+    "slug": "kitchen-table-with-sink",
+    "description": "Dining kitchen table with a built-in sink and chairs.",
+    "image": "goods_images/kitchen_table.jpg",
+    "price": "365.00",
+    "discount": "5.00",
+    "quantity": 12,
+    "category": 2
+  }
+},
+{
+  "model": "goods.product",
+  "pk": 12,
+  "fields": {
+    "name": "Kitchen Table with Built-in Stove and Sink",
+    "slug": "kitchen-table-with-built-in-stove-and-sink",
+    "description": "Kitchen table with a built-in stove and sink. Plenty of shelves and overall beautiful.",
+    "image": "goods_images/kitchen_table_2.jpg",
+    "price": "430.00",
+    "discount": "7.00",
+    "quantity": 7,
+    "category": 2
+  }
+}
+]

@@ -23,9 +23,13 @@ flake8-cognitive-complexity
 # Django
 Django
 django-debug-toolbar
+django-environ
 
 # Images
 Pillow
 
 # Interactive shell
 ipython
+
+# PostgreSQL database adapter
+psycopg2

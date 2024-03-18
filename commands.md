@@ -13,6 +13,12 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+**Django superuser:**
+
+```bash
+python manage.py createsuperuser
+```
+
 **Django runserver:**
 
 ```bash
@@ -26,6 +32,21 @@ python.exe .\manage.py runserver
 python -m pip freeze > requirements.txt
 python -m pip install -r requirements.txt
 ```
+
+**Fixtures:**
+
+```bash
+python manage.py dumpdata goods.Categories --indent 2 --output fixtures\goods\categories.json
+python manage.py dumpdata goods.Product --indent 2 --output fixtures\goods\products.json
+```
+> Given that json files are created in UTF-8 encoding
+
+```bash
+python manage.py loaddata fixtures\goods\categories.json
+python manage.py loaddata fixtures\goods\products.json
+```
+
+---
 
 **Autopep8:**
 
