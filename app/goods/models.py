@@ -55,3 +55,16 @@ class Product(models.Model):
     def __str__(self):
         """Returns a string representation of the product"""
         return f"{self.name} | Quantity - {self.quantity}"
+
+    def display_id(self):
+        """Returns a string representation of the product ID"""
+        return f"{self.id:05}"  # pylint: disable=E1101
+
+    def sell_price(self):
+        """
+        Returns the price of a product after applying any discount.
+        If no discount is applied, it simply returns the original price.
+        """
+        if self.discount:
+            return round(self.price - self.price * self.discount / 100, 2)
+        return self.price
