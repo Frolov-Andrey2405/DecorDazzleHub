@@ -1,16 +1,13 @@
 """Views"""
 
 from django.shortcuts import render
-from goods.models import Categories
 
 
 def index(request):
     """View function for home page of site"""
-    categories = Categories.objects.all()
     context = {
         "title": "DecorDazzleHub - Main",
         "content": "Furniture store 'DecorDazzleHub'",
-        "categories": categories,
     }
 
     return render(request, "main/index.html", context)
