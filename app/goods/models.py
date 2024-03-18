@@ -52,4 +52,4 @@ class Product(models.Model):
 
     def __str__(self):
         """Returns a string representation of the product"""
-        return f"{self.name} Quantity - {self.quantity}"
+        return f"{self.name} | Quantity - {self.quantity}"
