@@ -32,6 +32,7 @@ class Product(models.Model):
         db_table = "product"
         verbose_name = "Product"
         verbose_name_plural = "Products"
+        ordering = ("id",)
 
     name = models.CharField(max_length=150, unique=True, verbose_name="Name")
     slug = models.SlugField(
