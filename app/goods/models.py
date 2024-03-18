@@ -5,8 +5,10 @@ from django.db import models
 
 class Categories(models.Model):
     """Model for categories"""
+
     class Meta:
         """A class to define metadata for the Category model"""
+
         db_table = "categories"
         verbose_name = "Category"
         verbose_name_plural = "Categories"
@@ -23,8 +25,10 @@ class Categories(models.Model):
 
 class Product(models.Model):
     """Model for products"""
+
     class Meta:
         """A class to define metadata for the Product model"""
+
         db_table = "product"
         verbose_name = "Product"
         verbose_name_plural = "Products"
@@ -33,9 +37,7 @@ class Product(models.Model):
     slug = models.SlugField(
         max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
     )
-    description = models.TextField(
-        blank=True, null=True, verbose_name="Description"
-    )
+    description = models.TextField(blank=True, null=True, verbose_name="Description")
     image = models.ImageField(
         upload_to="goods_images", blank=True, null=True, verbose_name="Image"
     )
