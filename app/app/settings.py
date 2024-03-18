@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-from django.conf.global_settings import MEDIA_URL
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-)kvph#nr==^&u0e8m_osai!lcnkh%wse!6yhri1+8fk@shen#r"
@@ -19,10 +17,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # Third-party
     "debug_toolbar",
-
     # Apps
     "app",
     "main.apps.MainConfig",

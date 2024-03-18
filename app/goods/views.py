@@ -4,6 +4,7 @@ from django.shortcuts import get_list_or_404, render
 
 from goods.models import Product
 
+
 def catalog(request, category_slug):
     """
     The catalog function is the main page of the website.
