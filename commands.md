@@ -26,3 +26,33 @@ python.exe .\manage.py runserver
 python -m pip freeze > requirements.txt
 python -m pip install -r requirements.txt
 ```
+
+**Autopep8:**
+
+```bash
+autopep8 --in-place --aggressive --aggressive <filename>
+```
+
+**Black:**
+
+```bash
+black .
+```
+
+**Isort:**
+
+```bash
+isort .
+```
+
+**Mypy:**
+
+```bash
+mypy <filename>
+```
+
+**Autoflake:**
+
+```bash
+autoflake --in-place --remove-unused-variables <filename>
+```
