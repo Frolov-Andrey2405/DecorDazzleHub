@@ -2,6 +2,8 @@
 
 from pathlib import Path
 
+from django.conf.global_settings import MEDIA_URL
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-)kvph#nr==^&u0e8m_osai!lcnkh%wse!6yhri1+8fk@shen#r"
@@ -93,6 +95,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 INTERNAL_IPS = [
     "127.0.0.1",
