@@ -22,6 +22,7 @@ flake8-cognitive-complexity
 
 # Django
 Django
+django-debug-toolbar
 
 # Images
 Pillow
