@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "app",
     "main.apps.MainConfig",
     "goods.apps.GoodsConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -120,4 +121,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+# Settings
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+AUTH_USER_MODEL = "users.User"
