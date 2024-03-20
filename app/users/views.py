@@ -100,6 +100,13 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
+def users_cart(request):
+    """
+    The users_cart function renders the users_cart.html template.
+    """
+    return render(request, 'users/users_cart.html')
+
+
 @login_required
 def logout(request):
     """
