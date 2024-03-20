@@ -32,7 +32,16 @@ def cart_add(request, product_slug):
     return redirect(request.META["HTTP_REFERER"])
 
 
-def cart_change(request, product_slug): ...
+def cart_change(request, product_slug): 
+    ...
 
 
-def cart_remove(request, product_slug): ...
+def cart_remove(request, cart_id):
+    """
+    The cart_remove function removes a product from the cart.
+    It takes in a request and an id of the cart to be removed, then deletes it.
+    Finally, it redirects back to where you came from.
+    """
+    cart = Cart.objects.get(id=cart_id)
+    cart.delete()
+    return redirect(request.META['HTTP_REFERER'])
