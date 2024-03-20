@@ -2,10 +2,10 @@
 
 from django.contrib import auth
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from users.forms import UserLoginForm
+from users.forms import UserLoginForm, UserRegistrationForm
 
 def login(request):
     """
@@ -35,12 +35,28 @@ def login(request):
 
 
 def registration(request):
-    """View function for registration page of site"""
-    context = {
-        "title": "DecorDazzleHub - Registration",
-    }
+    """
+    The registration function is responsible for handling the registration of new users.
 
-    return render(request, "users/registration.html", context)
+    It takes a request object as its only parameter,
+    returns an HttpResponseRedirect to the index page if successful,
+    or renders the registration template with a UserRegistrationForm instance otherwise.
+    """
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.instance
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('main:index'))
+    else:
+        form = UserRegistrationForm()
+
+    context = {
+        'title': 'Home - Регистрация',
+        'form': form
+    }
+    return render(request, 'users/registration.html', context)
 
 
 def profile(request):
@@ -53,5 +69,8 @@ def profile(request):
 
 
 def logout(request):
-    """View function for logout page of site"""
-    ...
+    """
+    The logout function logs the user out of their account and redirects them to the index page.
+    """
+    auth.logout(request)
+    return redirect(reverse('main:index'))
