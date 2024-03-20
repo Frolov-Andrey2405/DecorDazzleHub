@@ -1,17 +1,20 @@
 """Forms"""
 
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import (AuthenticationForm, UserChangeForm,
+                                       UserCreationForm)
 
 from users.models import User
 
 
 class UserLoginForm(AuthenticationForm):
     """User login form"""
+
     class Meta:
         """Meta"""
+
         model = User
-        fields = ['username', 'password']
+        fields = ["username", "password"]
 
     username = forms.CharField()
     password = forms.CharField()
@@ -19,8 +22,10 @@ class UserLoginForm(AuthenticationForm):
 
 class UserRegistrationForm(UserCreationForm):
     """User registration form"""
+
     class Meta:
         """Meta"""
+
         model = User
         fields = (
             "first_name",
@@ -41,15 +46,18 @@ class UserRegistrationForm(UserCreationForm):
 
 class ProfileForm(UserChangeForm):
     """Profile form"""
+
     class Meta:
         """Meta"""
+
         model = User
         fields = (
             "image",
             "first_name",
             "last_name",
             "username",
-            "email",)
+            "email",
+        )
 
     image = forms.ImageField(required=False)
     first_name = forms.CharField()
