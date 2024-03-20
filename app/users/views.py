@@ -11,10 +11,7 @@ from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 def login(request):
     """
-    The login function is a view that allows users to login.
-    It takes in the request and returns a rendered template of the login page.
-    If the user submits valid credentials,
-    they are authenticated and redirected to their profile page.
+    The login function is used to authenticate a user and log them into their account.
     """
     if request.method == "POST":
         form = UserLoginForm(data=request.POST)
@@ -26,7 +23,8 @@ def login(request):
                 auth.login(request, user)
                 messages.success(
                     request, f"{username}, You're logged into your account")
-                if request.POST.get('next', None):
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
                     return HttpResponseRedirect(request.POST.get('next'))
                 return HttpResponseRedirect(reverse("main:index"))
     else:
@@ -78,8 +76,8 @@ def profile(request):
     dictionary and files from the request.FILES dictionary (the latter of which
     will be empty in this case).
 
-    If form validation passes, then we save()
-    our form instance and redirect back to our profile page with a success message.
+    If form validation passes, then we save() our form instance,
+    redirect back to our profile page with a success message.
     """
     if request.method == 'POST':
         form = ProfileForm(
