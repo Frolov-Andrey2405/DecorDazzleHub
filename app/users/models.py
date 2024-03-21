@@ -15,6 +15,7 @@ class User(AbstractUser):
     image = models.ImageField(
         upload_to="users_images", null=True, blank=True, verbose_name="avatar"
     )
+    phone_number = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):  # pylint: disable=E0307
         return self.username
