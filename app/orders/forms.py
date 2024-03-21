@@ -7,17 +7,28 @@ class CreateOrderForm(forms.Form):
     """
     Form for creating a new order.
 
-    Attributes:
-        first_name (CharField): First name of the customer.
-        last_name (CharField): Last name of the customer.
-        phone_number (CharField): Phone number of the customer.
-        requires_delivery (ChoiceField): Flag indicating if the order requires delivery.
-        delivery_address (CharField): Delivery address of the order. Optional.
-        payment_on_get (ChoiceField): Payment method of the order.
+    Fields:
+        first_name (CharField): First name of the client
+        last_name (CharField): Last name of the client
+        phone_number (CharField): Phone number of the client
+        requires_delivery (ChoiceField): Does the order require delivery (boolean)
+        delivery_address (CharField): Address for delivery (optional)
+        payment_on_get (ChoiceField): Is the order paid on delivery (boolean)
     """
+
     first_name = forms.CharField()
     last_name = forms.CharField()
     phone_number = forms.CharField()
-    requires_delivery = forms.ChoiceField()
+    requires_delivery = forms.ChoiceField(
+        choices=[
+            ("0", False),
+            ("1", True),
+            ],
+        )
     delivery_address = forms.CharField(required=False)
-    payment_on_get = forms.ChoiceField()
+    payment_on_get = forms.ChoiceField(
+        choices=[
+            ("0", 'False'),
+            ("1", 'True'),
+            ],
+        )
