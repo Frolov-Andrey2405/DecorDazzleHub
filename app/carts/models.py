@@ -61,14 +61,17 @@ class Cart(models.Model):
 
     def __str__(self):
         """
-        The __str__ function is used to return a string representation of the object.
+        The __str__ function is a special function in Python classes.
 
-        This function is called when you use print() on an object,
-        or when str() is used on an object.
+        It's called when you use the print() function or when you convert an object to a string,
+        for example with str().
 
-        The __str__ method should return a string that can be understood by humans.
+        The __str__ method should return a string representation of the object.
+
+        This can be whatever you want it to be,
+        but it should give some information about the state of the object.
         """
-        return f"Cart {
-            self.user.username} | Product {
-            self.product.name} | Quantity {
-            self.quantity}"
+        if self.user:
+            return f'Shopping cart {self.user.username} | Product {self.product.name} | Quantity {self.quantity}'
+
+        return f'Anonymous shopping cart | Product {self.product.name} | Quantity {self.quantity}'

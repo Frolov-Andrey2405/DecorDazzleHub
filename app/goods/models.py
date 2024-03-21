@@ -1,6 +1,7 @@
 """Models"""
 
 from django.db import models
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -57,6 +58,14 @@ class Product(models.Model):
     def __str__(self):
         """Returns a string representation of the product"""
         return f"{self.name} | Quantity - {self.quantity}"
+
+    def get_absolute_url(self):
+        """
+        The get_absolute_url function is used to return the URL of a product.
+        This function is called by Django when it needs to get the URL for an object.
+        For example, in templates you can use this syntax: {{ object.get_absolute_url }}
+        """
+        return reverse("catalog:product", kwargs={"product_slug": self.slug})
 
     def display_id(self):
         """Returns a string representation of the product ID"""
