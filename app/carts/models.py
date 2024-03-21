@@ -1,6 +1,7 @@
 """Models"""
 
 from django.db import models
+
 from goods.models import Product
 from users.models import User
 
@@ -25,8 +26,10 @@ class CartQueryset(models.QuerySet):
 
 class Cart(models.Model):
     """Model for cart"""
+
     class Meta:
         """Meta"""
+
         db_table = "cart"
         verbose_name = "Cart"
         verbose_name_plural = "Cart"
@@ -72,6 +75,11 @@ class Cart(models.Model):
         but it should give some information about the state of the object.
         """
         if self.user:
-            return f'Shopping cart {self.user.username} | Product {self.product.name} | Quantity {self.quantity}'
+            return f"Shopping cart {
+                self.user.username} | Product {
+                self.product.name} | Quantity {
+                self.quantity}"
 
-        return f'Anonymous shopping cart | Product {self.product.name} | Quantity {self.quantity}'
+        return f"Anonymous shopping cart | Product {
+            self.product.name} | Quantity {
+            self.quantity}"

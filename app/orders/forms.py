@@ -1,6 +1,7 @@
 """Forms"""
 
 import re
+
 from django import forms
 
 
@@ -27,26 +28,27 @@ class CreateOrderForm(forms.Form):
         choices=[
             ("0", False),
             ("1", True),
-            ],
-        )
+        ],
+    )
     delivery_address = forms.CharField(required=False)
     payment_on_get = forms.ChoiceField(
         choices=[
-            ("0", 'False'),
-            ("1", 'True'),
-            ],
-        )
+            ("0", "False"),
+            ("1", "True"),
+        ],
+    )
 
     def clean_phone_number(self):
         """
         Validates the format of the phone number.
         """
-        data = self.cleaned_data['phone_number']
+        data = self.cleaned_data["phone_number"]
 
         if not data.isdigit():
-            raise forms.ValidationError("Номер телефона должен содержать только цифры")
+            raise forms.ValidationError(
+                "Номер телефона должен содержать только цифры")
 
-        pattern = re.compile(r'^\d{10}$')
+        pattern = re.compile(r"^\d{10}$")
         if not pattern.match(data):
             raise forms.ValidationError("Неверный формат номера")
 

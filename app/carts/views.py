@@ -2,9 +2,9 @@
 
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+
 from carts.models import Cart
 from carts.utils import get_user_carts  # pylint: disable=E0401, E0611
-
 from goods.models import Product
 
 
@@ -28,7 +28,8 @@ def cart_add(request):
             Cart.objects.create(user=request.user, product=product, quantity=1)
     else:
         carts = Cart.objects.filter(
-            session_key=request.session.session_key, product=product)
+            session_key=request.session.session_key, product=product
+        )
         if carts.exists():
             cart = carts.first()
             if cart:
@@ -36,10 +37,13 @@ def cart_add(request):
                 cart.save()
         else:
             Cart.objects.create(
-                session_key=request.session.session_key, product=product, quantity=1)
+                session_key=request.session.session_key,
+                product=product,
+                quantity=1)
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        "includes/included_cart.html", {"carts": user_cart}, request=request)
+        "includes/included_cart.html", {"carts": user_cart}, request=request
+    )
     response_data = {
         "message": "Product has been added to your cart",
         "cart_items_html": cart_items_html,
@@ -68,7 +72,8 @@ def cart_change(request):
     updated_quantity = cart.quantity
     cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        "includes/included_cart.html", {"carts": cart}, request=request)
+        "includes/included_cart.html", {"carts": cart}, request=request
+    )
     response_data = {
         "message": "Quantity changed",
         "cart_items_html": cart_items_html,
@@ -81,7 +86,7 @@ def cart_remove(request):
     """
     The cart_remove function is called when the user clicks on the 'Remove' button in their cart.
 
-    The function deletes the item from their cart and returns a JsonResponse with a message, 
+    The function deletes the item from their cart and returns a JsonResponse with a message,
     the updated HTML for their cart, and how many items were deleted.
     """
     cart_id = request.POST.get("cart_id")
@@ -90,7 +95,8 @@ def cart_remove(request):
     cart.delete()
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
-        "includes/included_cart.html", {"carts": user_cart}, request=request)
+        "includes/included_cart.html", {"carts": user_cart}, request=request
+    )
     response_data = {
         "message": "Product deleted",
         "cart_items_html": cart_items_html,

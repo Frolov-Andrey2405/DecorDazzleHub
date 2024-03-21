@@ -1,6 +1,7 @@
 """Admin site for orders app"""
 
 from django.contrib import admin
+
 from orders.models import Order, OrderItem
 
 
@@ -56,9 +57,7 @@ class OrderAdmin(admin.ModelAdmin):
         "created_timestamp",
     )
 
-    search_fields = (
-        "id",
-    )
+    search_fields = ("id",)
     readonly_fields = ("created_timestamp",)
     list_filter = (
         "requires_delivery",

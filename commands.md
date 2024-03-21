@@ -54,6 +54,12 @@ python manage.py loaddata fixtures\goods\products.json
 autopep8 --in-place --aggressive --aggressive <filename>
 ```
 
+**Autoflake:**
+
+```bash
+autoflake --in-place --remove-unused-variables <filename>
+```
+
 **Black:**
 
 ```bash
@@ -70,10 +76,4 @@ isort .
 
 ```bash
 mypy <filename>
-```
-
-**Autoflake:**
-
-```bash
-autoflake --in-place --remove-unused-variables <filename>
 ```

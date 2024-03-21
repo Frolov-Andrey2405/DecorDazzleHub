@@ -1,9 +1,9 @@
 """Admin site for users app"""
 
 from django.contrib import admin
+
 from carts.admin import CartTabAdmin
 from orders.admin import OrderTabulareAdmin
-
 from users.models import User
 
 
@@ -16,6 +16,17 @@ class UserAdmin(admin.ModelAdmin):
         search_fields (tuple): Fields to search in the change list.
         inlines (tuple): Inline admin classes to display.
     """
-    list_display = ["username", "first_name", "last_name", "email",]
-    search_fields = ["username", "first_name", "last_name", "email",]
+
+    list_display = [
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+    ]
+    search_fields = [
+        "username",
+        "first_name",
+        "last_name",
+        "email",
+    ]
     inlines = [CartTabAdmin, OrderTabulareAdmin]

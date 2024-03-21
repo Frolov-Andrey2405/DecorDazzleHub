@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from carts.models import Cart
 
+
 class CartTabAdmin(admin.TabularInline):
     """
     Inline admin for `Cart` model.
@@ -17,6 +18,7 @@ class CartTabAdmin(admin.TabularInline):
         readonly_fields (tuple): Fields to display as read-only.
         extra (int): Additional inline forms to add.
     """
+
     model = Cart
     fields = ("product", "quantity", "created_timestamp")
     search_fields = ("product", "quantity", "created_timestamp")
@@ -33,7 +35,12 @@ class CartAdmin(admin.ModelAdmin):
         list_display (tuple): Fields to display in the change list.
         list_filter (tuple): Fields to filter by in the change list.
     """
-    list_display = ["user_display", "product_display", "quantity", "created_timestamp"]
+
+    list_display = [
+        "user_display",
+        "product_display",
+        "quantity",
+        "created_timestamp"]
     list_filter = ["created_timestamp", "user", "product__name"]
 
     def user_display(self, obj):

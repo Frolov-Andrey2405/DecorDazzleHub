@@ -11,7 +11,8 @@ def get_user_carts(request):
     it will return all carts that have been created with this session key.
     """
     if request.user.is_authenticated:
-        return Cart.objects.filter(user=request.user).select_related('product')
+        return Cart.objects.filter(user=request.user).select_related("product")
     if not request.session.session_key:
         request.session.create()
-    return Cart.objects.filter(session_key=request.session.session_key).select_related('product')
+    return Cart.objects.filter(
+        session_key=request.session.session_key).select_related("product")

@@ -14,6 +14,7 @@ class OrdersConfig(AppConfig):
         default_auto_field (str): The default auto field for models in this app.
         name (str): The name of this app.
     """
+
     default_auto_field = "django.db.models.BigAutoField"
     name = "orders"
     verbose_name = "orders"
