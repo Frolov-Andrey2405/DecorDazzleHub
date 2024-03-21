@@ -60,6 +60,13 @@ autopep8 --in-place --aggressive --aggressive <filename>
 autoflake --in-place --remove-unused-variables <filename>
 ```
 
+**Ruff:**
+
+```bash
+ruff check --fix
+ruff format
+```
+
 **Black:**
 
 ```bash
