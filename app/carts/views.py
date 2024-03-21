@@ -1,7 +1,6 @@
 """Views"""
 
 from django.http import JsonResponse
-from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from carts.models import Cart
 from carts.utils import get_user_carts  # pylint: disable=E0401, E0611
@@ -38,12 +37,23 @@ def cart_change(request, product_slug):
     ...
 
 
-def cart_remove(request, cart_id):
+def cart_remove(request):
     """
-    The cart_remove function removes a product from the cart.
-    It takes in a request and an id of the cart to be removed, then deletes it.
-    Finally, it redirects back to where you came from.
+    The cart_remove function is called when the user clicks on the 'Remove' button in their cart.
+
+    The function deletes the item from their cart and returns a JsonResponse with a message, 
+    the updated HTML for their cart, and how many items were deleted.
     """
+    cart_id = request.POST.get("cart_id")
     cart = Cart.objects.get(id=cart_id)
+    quantity = cart.quantity
     cart.delete()
-    return redirect(request.META['HTTP_REFERER'])
+    user_cart = get_user_carts(request)
+    cart_items_html = render_to_string(
+        "includes/included_cart.html", {"carts": user_cart}, request=request)
+    response_data = {
+        "message": "Product deleted",
+        "cart_items_html": cart_items_html,
+        "quantity_deleted": quantity,
+    }
+    return JsonResponse(response_data)
