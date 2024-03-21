@@ -95,85 +95,82 @@ $(document).ready(function () {
         });
     });
 
+    // Now the + - quantities of the goods
+    // Event handler for value reduction
+    $(document).on("click", ".decrement", function () {
+        // We take the link to the django controller from the data-cart-change-url attribute
+        var url = $(this).data("cart-change-url");
 
+        // We take the cart id from the data-cart-id attribute
+        var cartID = $(this).data("cart-id");
 
+        // We're looking for the nearest input with a quantity
+        var $input = $(this).closest('.input-group').find('.number');
 
-    // // Now the + - quantities of the goods
-    // // Event handler for value reduction
-    // $(document).on("click", ".decrement", function () {
-    //     // We take the link to the django controller from the data-cart-change-url attribute
-    //     var url = $(this).data("cart-change-url");
+        // Take the value of the quantity of goods
+        var currentValue = parseInt($input.val());
 
-    //     // We take the cart id from the data-cart-id attribute
-    //     var cartID = $(this).data("cart-id");
+        // If the quantities are greater than one, only then do -1
+        if (currentValue > 1) {
+            $input.val(currentValue - 1);
 
-    //     // We're looking for the nearest input with a quantity
-    //     var $input = $(this).closest('.input-group').find('.number');
+            // Run the function defined below
+            // with arguments (card id, new quantity, quantity decreased or added, url)
+            updateCart(cartID, currentValue - 1, -1, url);
+        }
+    });
+    // Event handler for value increment
+    $(document).on("click", ".increment", function () {
+        // We take the link to the django controller from the data-cart-change-url attribute
+        var url = $(this).data("cart-change-url");
 
-    //     // Take the value of the quantity of goods
-    //     var currentValue = parseInt($input.val());
+        // We take the cart id from the data-cart-id attribute
+        var cartID = $(this).data("cart-id");
 
-    //     // If the quantities are greater than one, only then do -1
-    //     if (currentValue > 1) {
-    //         $input.val(currentValue - 1);
+        // We're looking for the nearest input with a quantity
+        var $input = $(this).closest('.input-group').find('.number');
 
-    //         // Run the function defined below
-    //         // with arguments (card id, new quantity, quantity decreased or added, url)
-    //         updateCart(cartID, currentValue - 1, -1, url);
-    //     }
-    // });
-    // // Event handler for value increment
-    // $(document).on("click", ".increment", function () {
-    //     // We take the link to the django controller from the data-cart-change-url attribute
-    //     var url = $(this).data("cart-change-url");
+        // Take the value of the quantity of goods
+        var currentValue = parseInt($input.val());
+        $input.val(currentValue + 1);
 
-    //     // We take the cart id from the data-cart-id attribute
-    //     var cartID = $(this).data("cart-id");
+        // Run the function defined below
+        // with arguments (card id, new quantity, quantity decreased or added, url)
+        updateCart(cartID, currentValue + 1, 1, url);
+    });
+    function updateCart(cartID, quantity, change, url) {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                cart_id: cartID,
+                quantity: quantity,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                 // Message
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
 
-    //     // We're looking for the nearest input with a quantity
-    //     var $input = $(this).closest('.input-group').find('.number');
+                 // After 7 seconds, clear the message
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+                // Changing the number of items in the cart
+                var goodsInCartCount = $("#goods-in-cart-count");
+                var cartCount = parseInt(goodsInCartCount.text() || 0);
+                cartCount += change;
+                goodsInCartCount.text(cartCount);
 
-    //     // Take the value of the quantity of goods
-    //     var currentValue = parseInt($input.val());
-    //     $input.val(currentValue + 1);
-
-    //     // Run the function defined below
-    //     // with arguments (card id, new quantity, quantity decreased or added, url)
-    //     updateCart(cartID, currentValue + 1, 1, url);
-    // });
-    // function updateCart(cartID, quantity, change, url) {
-    //     $.ajax({
-    //         type: "POST",
-    //         url: url,
-    //         data: {
-    //             cart_id: cartID,
-    //             quantity: quantity,
-    //             csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-    //         },
-    //         success: function (data) {
-    //              // Message
-    //             successMessage.html(data.message);
-    //             successMessage.fadeIn(400);
-
-    //              // After 7 seconds, clear the message
-    //             setTimeout(function () {
-    //                  successMessage.fadeOut(400);
-    //             }, 7000);
-    //             // Changing the number of items in the cart
-    //             var goodsInCartCount = $("#goods-in-cart-count");
-    //             var cartCount = parseInt(goodsInCartCount.text() || 0);
-    //             cartCount += change;
-    //             goodsInCartCount.text(cartCount);
-
-    //             // Changing the contents of the shopping cart
-    //             var cartItemsContainer = $("#cart-items-container");
-    //             cartItemsContainer.html(data.cart_items_html);
-    //         },
-    //         error: function (data) {
-    //             console.log("Ошибка при добавлении товара в корзину");
-    //         },
-    //     });
-    // }
+                // Changing the contents of the shopping cart
+                var cartItemsContainer = $("#cart-items-container");
+                cartItemsContainer.html(data.cart_items_html);
+            },
+            error: function (data) {
+                console.log("Ошибка при добавлении товара в корзину");
+            },
+        });
+    }
 
     // Take element by id from markup - django alerts
     var notification = $('#notification');
