@@ -67,7 +67,7 @@ def registration(request):
         form = UserRegistrationForm()
 
     context = {
-        'title': 'Home - Регистрация',
+        'title': 'Home - Registration',
         'form': form
     }
     return render(request, 'users/registration.html', context)
@@ -99,7 +99,7 @@ def profile(request):
         form = ProfileForm(instance=request.user)
 
     context = {
-        'title': 'Home - Кабинет',
+        'title': 'Home - Profile',
         'form': form
     }
     return render(request, 'users/profile.html', context)
