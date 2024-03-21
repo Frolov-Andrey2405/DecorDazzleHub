@@ -1,7 +1,8 @@
 """Tags for carts app"""
 
-from carts.models import Cart
 from django import template
+from carts.utils import get_user_carts
+
 
 register = template.Library()
 
@@ -9,8 +10,7 @@ register = template.Library()
 @register.simple_tag()
 def user_carts(request):
     """
-    The user_carts function returns a queryset of all the carts that belong to the user.
-    If no user is logged in, it returns an empty queryset.
+    Returns a list of all the carts that belong to the user.
+    The function takes in a request object and returns a list of cart objects.
     """
-    if request.user.is_authenticated:
-        return Cart.objects.filter(user=request.user)
+    return get_user_carts(request)
