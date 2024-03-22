@@ -1,5 +1,4 @@
-"""
-UsersConfig class
+"""UsersConfig class
 Configuration for the 'users' app
 """
 

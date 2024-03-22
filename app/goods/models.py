@@ -16,7 +16,11 @@ class Categories(models.Model):
 
     name = models.CharField(max_length=150, unique=True, verbose_name="Name")
     slug = models.SlugField(
-        max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
+        max_length=200,
+        unique=True,
+        blank=True,
+        null=True,
+        verbose_name="URL",
     )
 
     def __str__(self):
@@ -37,22 +41,38 @@ class Product(models.Model):
 
     name = models.CharField(max_length=150, unique=True, verbose_name="Name")
     slug = models.SlugField(
-        max_length=200, unique=True, blank=True, null=True, verbose_name="URL"
+        max_length=200,
+        unique=True,
+        blank=True,
+        null=True,
+        verbose_name="URL",
     )
     description = models.TextField(
-        blank=True, null=True, verbose_name="Description")
+        blank=True, null=True, verbose_name="Description"
+    )
     image = models.ImageField(
-        upload_to="goods_images", blank=True, null=True, verbose_name="Image"
+        upload_to="goods_images",
+        blank=True,
+        null=True,
+        verbose_name="Image",
     )
     price = models.DecimalField(
-        default=0.00, max_digits=7, decimal_places=2, verbose_name="Price"
+        default=0.00,
+        max_digits=7,
+        decimal_places=2,
+        verbose_name="Price",
     )
     discount = models.DecimalField(
-        default=0.00, max_digits=7, decimal_places=2, verbose_name="Discount"
+        default=0.00,
+        max_digits=7,
+        decimal_places=2,
+        verbose_name="Discount",
     )
     quantity = models.PositiveIntegerField(default=0, verbose_name="Quantity")
     category = models.ForeignKey(
-        to=Categories, on_delete=models.CASCADE, verbose_name="Category"
+        to=Categories,
+        on_delete=models.CASCADE,
+        verbose_name="Category",
     )
 
     def __str__(self):
@@ -60,8 +80,7 @@ class Product(models.Model):
         return f"{self.name} | Quantity - {self.quantity}"
 
     def get_absolute_url(self):
-        """
-        The get_absolute_url function is used to return the URL of a product.
+        """The get_absolute_url function is used to return the URL of a product.
         This function is called by Django when it needs to get the URL for an object.
         For example, in templates you can use this syntax: {{ object.get_absolute_url }}
         """
@@ -72,8 +91,7 @@ class Product(models.Model):
         return f"{self.id:05}"
 
     def sell_price(self):
-        """
-        Returns the price of a product after applying any discount.
+        """Returns the price of a product after applying any discount.
         If no discount is applied, it simply returns the original price.
         """
         if self.discount:

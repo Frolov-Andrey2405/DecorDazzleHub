@@ -8,10 +8,7 @@ from goods.utils import q_search
 
 
 def catalog(request, category_slug=None):
-    """
-    The catalog function is the main page of the website.
-    """
-
+    """The catalog function is the main page of the website."""
     page = request.GET.get("page", 1)
     on_sale = request.GET.get("on_sale", None)
     order_by = request.GET.get("order_by", None)
@@ -23,8 +20,8 @@ def catalog(request, category_slug=None):
         goods = q_search(query)
     else:
         goods = get_list_or_404(
-            Product.objects.filter(
-                category__slug=category_slug))
+            Product.objects.filter(category__slug=category_slug)
+        )
 
     if on_sale:
         goods = goods.filter(discount__gt=0)
@@ -44,9 +41,7 @@ def catalog(request, category_slug=None):
 
 
 def product(request, product_slug):
-    """
-    The product function returns a rendered template of the product page.
-    """
+    """The product function returns a rendered template of the product page."""
     product_instance = Product.objects.get(slug=product_slug)
 
     context = {

@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("carts", "0001_initial"),
         ("goods", "0003_alter_product_options"),
@@ -21,7 +20,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="cart",
             name="created_timestamp",
-            field=models.DateTimeField(auto_now_add=True, verbose_name="Date added"),
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name="Date added"
+            ),
         ),
         migrations.AlterField(
             model_name="cart",
@@ -35,7 +36,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="cart",
             name="quantity",
-            field=models.PositiveSmallIntegerField(default=0, verbose_name="Quantity"),
+            field=models.PositiveSmallIntegerField(
+                default=0, verbose_name="Quantity"
+            ),
         ),
         migrations.AlterField(
             model_name="cart",

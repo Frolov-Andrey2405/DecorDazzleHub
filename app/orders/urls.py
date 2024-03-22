@@ -1,6 +1,4 @@
-"""
-URL configuration for orders project
-"""
+"""URL configuration for orders project"""
 
 from django.urls import path
 

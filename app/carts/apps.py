@@ -1,5 +1,4 @@
-"""
-CartsConfig class
+"""CartsConfig class
 Configuration for the 'carts' app
 """
 

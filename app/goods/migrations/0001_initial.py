@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []
@@ -26,7 +25,10 @@ class Migration(migrations.Migration):
                 (
                     "slug",
                     models.SlugField(
-                        blank=True, max_length=200, null=True, unique=True
+                        blank=True,
+                        max_length=200,
+                        null=True,
+                        unique=True,
                     ),
                 ),
             ],

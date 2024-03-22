@@ -1,9 +1,9 @@
 """Admin site for users app"""
 
-from django.contrib import admin
-
 from carts.admin import CartTabAdmin
+from django.contrib import admin
 from orders.admin import OrderTabulareAdmin
+
 from users.models import User
 
 
@@ -11,10 +11,12 @@ from users.models import User
 class UserAdmin(admin.ModelAdmin):
     """Admin site for `User` model.
 
-    Attributes:
+    Attributes
+    ----------
         list_display (tuple): Fields to display in the change list.
         search_fields (tuple): Fields to search in the change list.
         inlines (tuple): Inline admin classes to display.
+
     """
 
     list_display = [

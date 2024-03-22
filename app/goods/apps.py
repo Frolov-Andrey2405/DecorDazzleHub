@@ -1,5 +1,4 @@
-"""
-GoodsConfig class
+"""GoodsConfig class
 Configuration for the 'goods' app
 """
 

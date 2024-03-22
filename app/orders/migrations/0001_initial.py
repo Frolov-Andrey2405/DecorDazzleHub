@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -30,32 +29,42 @@ class Migration(migrations.Migration):
                 (
                     "created_timestamp",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name="Date of order creation"
+                        auto_now_add=True,
+                        verbose_name="Date of order creation",
                     ),
                 ),
                 (
                     "phone_number",
-                    models.CharField(max_length=20, verbose_name="Phone number"),
+                    models.CharField(
+                        max_length=20, verbose_name="Phone number"
+                    ),
                 ),
                 (
                     "requires_delivery",
                     models.BooleanField(
-                        default=False, verbose_name="Delivery required"
+                        default=False,
+                        verbose_name="Delivery required",
                     ),
                 ),
                 (
                     "delivery_address",
                     models.TextField(
-                        blank=True, null=True, verbose_name="Delivery address"
+                        blank=True,
+                        null=True,
+                        verbose_name="Delivery address",
                     ),
                 ),
                 (
                     "payment_on_get",
                     models.BooleanField(
-                        default=False, verbose_name="Payment on receipt"
+                        default=False,
+                        verbose_name="Payment on receipt",
                     ),
                 ),
-                ("is_paid", models.BooleanField(default=False, verbose_name="Paid")),
+                (
+                    "is_paid",
+                    models.BooleanField(default=False, verbose_name="Paid"),
+                ),
                 (
                     "status",
                     models.CharField(
@@ -94,21 +103,29 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("name", models.CharField(max_length=150, verbose_name="Title")),
+                (
+                    "name",
+                    models.CharField(max_length=150, verbose_name="Title"),
+                ),
                 (
                     "price",
                     models.DecimalField(
-                        decimal_places=2, max_digits=7, verbose_name="Price"
+                        decimal_places=2,
+                        max_digits=7,
+                        verbose_name="Price",
                     ),
                 ),
                 (
                     "quantity",
-                    models.PositiveIntegerField(default=0, verbose_name="Quantity"),
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Quantity"
+                    ),
                 ),
                 (
                     "created_timestamp",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name="Date of Sale"
+                        auto_now_add=True,
+                        verbose_name="Date of Sale",
                     ),
                 ),
                 (

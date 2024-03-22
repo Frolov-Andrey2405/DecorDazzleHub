@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -30,14 +29,19 @@ class Migration(migrations.Migration):
                 (
                     "quantity",
                     models.PositiveSmallIntegerField(
-                        default=0, verbose_name="Количество"
+                        default=0,
+                        verbose_name="Количество",
                     ),
                 ),
-                ("session_key", models.CharField(blank=True, max_length=32, null=True)),
+                (
+                    "session_key",
+                    models.CharField(blank=True, max_length=32, null=True),
+                ),
                 (
                     "created_timestamp",
                     models.DateTimeField(
-                        auto_now_add=True, verbose_name="Дата добавления"
+                        auto_now_add=True,
+                        verbose_name="Дата добавления",
                     ),
                 ),
                 (

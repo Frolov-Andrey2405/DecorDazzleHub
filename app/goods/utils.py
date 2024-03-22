@@ -2,16 +2,18 @@
 
 # from django.db.models import Q
 
-from django.contrib.postgres.search import (SearchHeadline, SearchQuery,
-                                            SearchRank, SearchVector)
+from django.contrib.postgres.search import (
+    SearchHeadline,
+    SearchQuery,
+    SearchRank,
+    SearchVector,
+)
 
 from goods.models import Product
 
 
 def q_search(query):
-    """
-    The q_search function takes a query string and returns a list of products that match the query.
-    """
+    """The q_search function takes a query string and returns a list of products that match the query."""
     if query.isdigit() and len(query) <= 5:
         return Product.objects.filter(id=int(query))
 
@@ -29,7 +31,7 @@ def q_search(query):
             query,
             start_sel="<span style='background-color:yellow;'>",
             stop_sel="</span>",
-        )
+        ),
     )
     result = result.annotate(
         bodyline=SearchHeadline(
@@ -37,7 +39,7 @@ def q_search(query):
             query,
             start_sel="<span style='background-color:yellow;'>",
             stop_sel="</span>",
-        )
+        ),
     )
 
     return result

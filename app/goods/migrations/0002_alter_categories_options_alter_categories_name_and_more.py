@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("goods", "0001_initial"),
     ]
@@ -13,18 +12,27 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name="categories",
-            options={"verbose_name": "Category", "verbose_name_plural": "Categories"},
+            options={
+                "verbose_name": "Category",
+                "verbose_name_plural": "Categories",
+            },
         ),
         migrations.AlterField(
             model_name="categories",
             name="name",
-            field=models.CharField(max_length=150, unique=True, verbose_name="Name"),
+            field=models.CharField(
+                max_length=150, unique=True, verbose_name="Name"
+            ),
         ),
         migrations.AlterField(
             model_name="categories",
             name="slug",
             field=models.SlugField(
-                blank=True, max_length=200, null=True, unique=True, verbose_name="URL"
+                blank=True,
+                max_length=200,
+                null=True,
+                unique=True,
+                verbose_name="URL",
             ),
         ),
         migrations.CreateModel(
@@ -41,7 +49,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(max_length=150, unique=True, verbose_name="Name"),
+                    models.CharField(
+                        max_length=150, unique=True, verbose_name="Name"
+                    ),
                 ),
                 (
                     "slug",
@@ -55,7 +65,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "description",
-                    models.TextField(blank=True, null=True, verbose_name="Description"),
+                    models.TextField(
+                        blank=True, null=True, verbose_name="Description"
+                    ),
                 ),
                 (
                     "image",
@@ -86,7 +98,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "quantity",
-                    models.PositiveIntegerField(default=0, verbose_name="Quantity"),
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Quantity"
+                    ),
                 ),
                 (
                     "category",

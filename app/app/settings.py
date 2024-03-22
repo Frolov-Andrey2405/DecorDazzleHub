@@ -3,7 +3,6 @@
 from pathlib import Path
 
 import environ
-from django.contrib import messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -75,7 +74,7 @@ DATABASES = {
         "PASSWORD": env("POSTGRES_PASSWORD"),
         "HOST": env("POSTGRES_HOST"),
         "PORT": env("POSTGRES_PORT", default=5432),
-    }
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [

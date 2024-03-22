@@ -4,9 +4,11 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ("carts", "0002_alter_cart_options_alter_cart_created_timestamp_and_more"),
+        (
+            "carts",
+            "0002_alter_cart_options_alter_cart_created_timestamp_and_more",
+        ),
     ]
 
     operations = [

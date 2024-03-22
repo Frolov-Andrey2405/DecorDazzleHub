@@ -1,5 +1,4 @@
-"""
-MainConfig class
+"""MainConfig class
 Configuration for the 'main' app
 """
 

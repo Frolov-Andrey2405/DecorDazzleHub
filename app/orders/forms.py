@@ -6,8 +6,7 @@ from django import forms
 
 
 class CreateOrderForm(forms.Form):
-    """
-    Form for creating a new order.
+    """Form for creating a new order.
 
     Fields:
         first_name (CharField): User's first name
@@ -17,8 +16,10 @@ class CreateOrderForm(forms.Form):
         delivery_address (CharField): Delivery address (optional)
         payment_on_get (ChoiceField): Payment on receipt (True/False)
 
-    Methods:
+    Methods
+    -------
         clean_phone_number(self): Validates phone number format
+
     """
 
     first_name = forms.CharField()
@@ -39,14 +40,13 @@ class CreateOrderForm(forms.Form):
     )
 
     def clean_phone_number(self):
-        """
-        Validates the format of the phone number.
-        """
+        """Validates the format of the phone number."""
         data = self.cleaned_data["phone_number"]
 
         if not data.isdigit():
             raise forms.ValidationError(
-                "Номер телефона должен содержать только цифры")
+                "Номер телефона должен содержать только цифры"
+            )
 
         pattern = re.compile(r"^\d{10}$")
         if not pattern.match(data):

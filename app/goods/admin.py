@@ -19,13 +19,15 @@ class CategoriesAdmin(admin.ModelAdmin):
 class ProductsAdmin(admin.ModelAdmin):
     """Admin site for Product model.
 
-    Attributes:
+    Attributes
+    ----------
         prepopulated_fields (dict): Fields to prepopulate.
         list_display (tuple): Fields to display in the change list.
         list_editable (tuple): Fields to make editable in the change list.
         search_fields (tuple): Fields to search by.
         list_filter (tuple): Fields to filter by in the change list.
         fields (tuple): Fields to display in the change form.
+
     """
 
     prepopulated_fields = {"slug": ("name",)}
